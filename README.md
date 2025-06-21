@@ -7,3 +7,4 @@
 - Clone this repo
 - Run `nix develop`
 - Run neovim with either: `vi`, `vim`, or `nvim`
+- `nix run github:codebam/neovim` to run neovim directly without cloning the repo
