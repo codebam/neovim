@@ -146,9 +146,9 @@
           };
         in
         {
-          config.programs.mnw = {
+          config.programs.mnw = homeManagerMnwConfig // {
             enable = true;
-          } // homeManagerMnwConfig;
+          };
         }
       );
     };
