@@ -98,22 +98,6 @@
           };
 
           neovim = inputs.mnw.lib.wrap pkgs mnwConfig;
-
-          neovimHomeManagerModule =
-            {
-              config,
-              lib,
-              ...
-            }:
-            {
-              config = {
-                home = {
-                  programs.mnw = {
-                    enable = true;
-                  } // mnwConfig;
-                };
-              };
-            };
         in
         {
           packages.default = neovim;
@@ -128,8 +112,6 @@
             type = "app";
             program = "${neovim}/bin/nvim";
           };
-
-          homeManagerModules.default = neovimHomeManagerModule;
         }
       );
 
@@ -147,7 +129,7 @@
           };
         in
         {
-          config.home.mnw = {
+          config.home.programs.mnw = {
             enable = true;
           } // hmMnwConfig;
         }
