@@ -72,6 +72,7 @@
               nil
               nixd
               git
+              markdown-oxide
             ];
           }
         );
