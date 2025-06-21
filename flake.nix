@@ -27,7 +27,7 @@
               "vim"
             ];
             initLua = ''
-              require("codebam")
+              require("config")
             '';
             providers = {
               ruby.enable = false;
