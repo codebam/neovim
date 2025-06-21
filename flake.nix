@@ -108,7 +108,7 @@
             {
               config = {
                 home = {
-                  mnw = {
+                  programs.mnw = {
                     enable = true;
                   } // mnwConfig;
                 };
