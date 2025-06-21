@@ -19,6 +19,68 @@
       ...
     }:
     let
+      mkMnwSharedConfig = pkgs: {
+        neovim = pkgs.neovim-unwrapped;
+
+        aliases = [
+          "vi"
+          "vim"
+        ];
+
+        initLua = ''
+          require("config")
+        '';
+
+        providers = {
+          ruby.enable = false;
+          python3.enable = false;
+        };
+
+        plugins = {
+          dev.config = {
+            pure = ./nvim;
+          };
+          start = with pkgs.vimPlugins; [
+            avante-nvim
+            blink-cmp
+            blink-cmp-copilot
+            catppuccin-vim
+            commentary
+            conform-nvim
+            copilot-lua
+            friendly-snippets
+            git-blame-nvim
+            gitsigns-nvim
+            lazydev-nvim
+            lualine-nvim
+            luasnip
+            neogit
+            nvim-autopairs
+            nvim-bqf
+            nvim-surround
+            nvim-treesitter.withAllGrammars
+            nvim-treesitter-textobjects
+            nvim-web-devicons
+            oil-nvim
+            plenary-nvim
+            sleuth
+            telescope-nvim
+            todo-comments-nvim
+            treesj
+          ];
+        };
+
+        extraLuaPackages = luaPkgs: [ luaPkgs.jsregexp ];
+
+        extraBinPath = with pkgs; [
+          bash-language-server
+          nil
+          nixd
+          git
+          markdown-oxide
+        ];
+      };
+
       forAllSystems =
         function:
         nixpkgs.lib.genAttrs
@@ -33,7 +95,7 @@
             function (
               import nixpkgs {
                 inherit system;
-                config.allowUnfree = true; # As per the target example structure
+                config.allowUnfree = true;
               }
             )
           );
@@ -41,63 +103,8 @@
       perSystem = forAllSystems (
         pkgs:
         let
-          mnwConfig = {
-            neovim = pkgs.neovim-unwrapped;
-            aliases = [
-              "vi"
-              "vim"
-            ];
-            initLua = ''
-              require("config")
-            '';
-            providers = {
-              ruby.enable = false;
-              python3.enable = false;
-            };
-            plugins = {
-              dev.config = {
-                pure = ./nvim;
-              };
-              start = with pkgs.vimPlugins; [
-                avante-nvim
-                blink-cmp
-                blink-cmp-copilot
-                catppuccin-vim
-                commentary
-                conform-nvim
-                copilot-lua
-                friendly-snippets
-                git-blame-nvim
-                gitsigns-nvim
-                lazydev-nvim
-                lualine-nvim
-                luasnip
-                neogit
-                nvim-autopairs
-                nvim-bqf
-                nvim-surround
-                nvim-treesitter.withAllGrammars
-                nvim-treesitter-textobjects
-                nvim-web-devicons
-                oil-nvim
-                plenary-nvim
-                sleuth
-                telescope-nvim
-                todo-comments-nvim
-                treesj
-              ];
-            };
-            extraLuaPackages = ps: [ ps.jsregexp ];
-            extraBinPath = with pkgs; [
-              bash-language-server
-              nil
-              nixd
-              git
-              markdown-oxide
-            ];
-          };
-
-          neovim = inputs.mnw.lib.wrap pkgs mnwConfig;
+          mnwConfigForWrap = mkMnwSharedConfig pkgs;
+          neovim = inputs.mnw.lib.wrap pkgs mnwConfigForWrap;
         in
         {
           packages.default = neovim;
@@ -105,7 +112,7 @@
           devShells.default = pkgs.mkShell {
             packages = [
               neovim
-            ];
+            ] ++ mnwConfigForWrap.extraBinPath; # Or add them directly
           };
 
           apps.default = {
@@ -122,16 +129,31 @@
       apps = nixpkgs.lib.mapAttrs (_systemName: systemOutputs: systemOutputs.apps) perSystem;
 
       homeManagerModules.default = (
-        { pkgs, ... }:
+        { pkgs, lib, ... }:
         let
-          hmMnwConfig = {
-            neovim = pkgs.neovim-unwrapped;
+          sharedConfigData = mkMnwSharedConfig pkgs;
+
+          homeManagerMnwConfig = {
+            inherit (sharedConfigData)
+              neovim
+              initLua
+              providers
+              extraBinPath
+              aliases
+              ;
+
+            configDir = sharedConfigData.plugins.dev.config.pure;
+
+            plugins = {
+              start = sharedConfigData.plugins.start;
+            };
+            extraLuaPackages = sharedConfigData.extraLuaPackages pkgs.luaPackages;
           };
         in
         {
           config.home.programs.mnw = {
             enable = true;
-          } // hmMnwConfig;
+          } // homeManagerMnwConfig;
         }
       );
     };
