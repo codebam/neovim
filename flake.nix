@@ -151,7 +151,7 @@
           };
         in
         {
-          config.home.programs.mnw = {
+          config.programs.mnw = {
             enable = true;
           } // homeManagerMnwConfig;
         }
