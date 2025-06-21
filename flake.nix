@@ -142,11 +142,7 @@
               aliases
               ;
 
-            configDir = sharedConfigData.plugins.dev.config.pure;
-
-            plugins = {
-              start = sharedConfigData.plugins.start;
-            };
+            plugins = sharedConfigData.plugins;
             extraLuaPackages = sharedConfigData.extraLuaPackages pkgs.luaPackages;
           };
         in
