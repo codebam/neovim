@@ -38,10 +38,13 @@
                 pure = ./nvim;
               };
               start = with pkgs.vimPlugins; [
+                avante-nvim
                 blink-cmp
+                blink-cmp-copilot
                 catppuccin-vim
                 commentary
                 conform-nvim
+                copilot-lua
                 friendly-snippets
                 git-blame-nvim
                 gitsigns-nvim

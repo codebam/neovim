@@ -13,6 +13,7 @@ require("blink.cmp").setup({
 		default = {
 			"snippets",
 			"lsp",
+			"copilot",
 			"path",
 			"lazydev",
 			"omni",
@@ -22,6 +23,12 @@ require("blink.cmp").setup({
 				name = "LazyDev",
 				module = "lazydev.integrations.blink",
 				score_offset = 100,
+			},
+			copilot = {
+				name = "copilot",
+				module = "blink-cmp-copilot",
+				score_offset = 100,
+				async = true,
 			},
 		},
 	},
@@ -152,6 +159,42 @@ require("nvim-autopairs").setup()
 require("gitsigns").setup()
 
 require("neogit").setup()
+
+require("copilot").setup({
+	suggestion = {
+		enabled = false,
+	},
+	panel = {
+		enabled = false,
+	},
+})
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BlinkCmpMenuOpen",
+	callback = function()
+		vim.b.copilot_suggestion_hidden = true
+	end,
+})
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BlinkCmpMenuClose",
+	callback = function()
+		vim.b.copilot_suggestion_hidden = false
+	end,
+})
+
+require("avante").setup({
+	provider = "copilot",
+	providers = {
+		ollama = {
+			model = "devstral",
+		},
+		gemini = {
+			model = "gemini-2.5-flash-preview-05-20",
+		},
+	},
+	behaviour = {
+		auto_approve_tool_permissions = true,
+	},
+})
 
 require("treesj").setup()
 
