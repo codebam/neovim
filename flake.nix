@@ -135,15 +135,14 @@
 
           homeManagerMnwConfig = {
             inherit (sharedConfigData)
-              neovim
-              initLua
-              providers
-              extraBinPath
               aliases
+              extraBinPath
+              extraLuaPackages
+              initLua
+              neovim
+              plugins
+              providers
               ;
-
-            plugins = sharedConfigData.plugins;
-            extraLuaPackages = sharedConfigData.extraLuaPackages pkgs.luaPackages;
           };
         in
         {
