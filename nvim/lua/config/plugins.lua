@@ -199,10 +199,12 @@ require("avante").setup({
 			host_mount = os.getenv("HOME"),
 			runner = "nix",
 			llm = {
-				provider = "copilot",
+				provider = "ollama",
+				model = "qwen3:32b",
 			},
 			embed = {
-				provider = "copilot",
+				provider = "ollama",
+				model = "nomic-embed-text:latest",
 			},
 		},
 	},
