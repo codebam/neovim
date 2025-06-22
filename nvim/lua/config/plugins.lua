@@ -182,13 +182,17 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 require("avante").setup({
-	provider = "copilot",
+	provider = "claude",
 	providers = {
 		ollama = {
 			model = "devstral",
 		},
 		gemini = {
 			model = "gemini-2.5-flash-preview-05-20",
+		},
+		claude = {
+			endpoint = "https://api.anthropic.com",
+			model = "claude-sonnet-4-20250514";
 		},
 	},
 	behaviour = {
