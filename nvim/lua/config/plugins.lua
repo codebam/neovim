@@ -195,15 +195,17 @@ require("avante").setup({
 			model = "claude-sonnet-4-20250514";
 		},
 		rag_service = {
+			__inherited_from = "copilot",
 			enabled = true,
 			host_mount = os.getenv("HOME"),
 			runner = "nix",
 			llm = {
-				provider = "ollama",
-				model = "qwen3:32b",
+				provider = "copilot",
 			},
 			embed = {
 				provider = "ollama",
+				endpoint = "http://localhost:11434",
+				api_key = "",
 				model = "nomic-embed-text:latest",
 			},
 		},
