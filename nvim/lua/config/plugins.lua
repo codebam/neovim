@@ -185,7 +185,7 @@ require("avante").setup({
 	provider = "ollama",
 	providers = {
 		ollama = {
-			model = "devstral",
+			model = "qwen2.5-coder:32b",
 		},
 		gemini = {
 			model = "gemini-2.5-flash-preview-05-20",
@@ -203,7 +203,7 @@ require("avante").setup({
 				provider = "ollama",
 				endpoint = "http://localhost:11434",
 				api_key = "",
-				model = "devstral:latest",
+				model = "qwen2.5-coder:32b",
 			},
 			embed = {
 				provider = "ollama",
