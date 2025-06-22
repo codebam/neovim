@@ -182,7 +182,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 require("avante").setup({
-	provider = "copilot",
+	provider = "ollama",
 	providers = {
 		ollama = {
 			model = "devstral",
@@ -195,12 +195,15 @@ require("avante").setup({
 			model = "claude-sonnet-4-20250514";
 		},
 		rag_service = {
-			__inherited_from = "copilot",
+			__inherited_from = "ollama",
 			enabled = true,
 			host_mount = os.getenv("HOME"),
 			runner = "nix",
 			llm = {
-				provider = "copilot",
+				provider = "ollama",
+				endpoint = "http://localhost:11434",
+				api_key = "",
+				model = "devstral:latest",
 			},
 			embed = {
 				provider = "ollama",
