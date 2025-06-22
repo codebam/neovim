@@ -182,7 +182,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 require("avante").setup({
-	provider = "claude",
+	provider = "copilot",
 	providers = {
 		ollama = {
 			model = "devstral",
@@ -193,6 +193,17 @@ require("avante").setup({
 		claude = {
 			endpoint = "https://api.anthropic.com",
 			model = "claude-sonnet-4-20250514";
+		},
+		rag_service = {
+			enabled = true,
+			host_mount = os.getenv("HOME"),
+			runner = "nix",
+			llm = {
+				provider = "copilot",
+			},
+			embed = {
+				provider = "copilot",
+			},
 		},
 	},
 	behaviour = {
