@@ -1,1 +1,10 @@
-return { "l3mon4d3/luasnip" }
+return {
+	"l3mon4d3/luasnip",
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+	},
+	config = function()
+		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
+	end,
+}

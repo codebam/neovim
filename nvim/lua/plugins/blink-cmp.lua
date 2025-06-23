@@ -22,20 +22,12 @@ return {
 			signature = { enabled = true },
 			snippets = { preset = "luasnip" },
 			sources = {
-				transform_items = function(_, items)
-					for _, item in ipairs(items) do
-						if item.kind == require("blink.cmp.types").CompletionItemKind.Snippet then
-							item.score_offset = item.score_offset + 10
-						end
-					end
-					return items
-				end,
 				default = {
 					"snippets",
+					"lazydev",
 					"lsp",
 					"copilot",
 					"path",
-					"lazydev",
 					"omni",
 				},
 				providers = {
@@ -54,6 +46,9 @@ return {
 			},
 		},
 		opts_extend = { "sources.default" },
+		dependencies = {
+			"l3mon4d3/luasnip",
+		},
 	},
 	{
 		"giuxtaposition/blink-cmp-copilot",
