@@ -1,7 +1,3 @@
--- you have to set leader before loading lazy
-vim.keymap.set("n", " ", "<Nop>", { silent = true, remap = false })
-vim.g.mapleader = " "
-
 require("config.general")
 require("config.keymaps")
 require("config.lsp")
@@ -17,7 +13,7 @@ if mnw ~= nil then
       patterns = { "" },
       -- fallback to downloading plugins from git
       -- disable this to force only using nix plugins
-      fallback = true,
+      fallback = false,
     },
 
     -- keep rtp/packpath the same

@@ -37,13 +37,7 @@
             lazy-nvim
             lualine-nvim
             nvim-bqf
-            nvim-treesitter-textobjects
-            nvim-treesitter.withAllGrammars
             oil-nvim
-            plenary-nvim
-            sleuth
-            commentary
-            todo-comments-nvim
           ];
           opt = with pkgs.vimPlugins; [
             avante-nvim
@@ -54,16 +48,22 @@
             copilot-lua
             friendly-snippets
             git-blame-nvim
-            nvim-lspconfig
             lazydev-nvim
             luasnip
             neogit
-            nvim-autopairs
-            nvim-surround
-            nvim-web-devicons
             nui-nvim
+            nvim-autopairs
+            nvim-lspconfig
+            nvim-surround
+            nvim-treesitter-textobjects
+            nvim-treesitter.withAllGrammars
+            nvim-web-devicons
+            plenary-nvim
             telescope-nvim
+            todo-comments-nvim
             treesj
+            vim-commentary
+            vim-sleuth
           ];
         };
 
