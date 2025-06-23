@@ -54,6 +54,7 @@
             copilot-lua
             friendly-snippets
             git-blame-nvim
+            nvim-lspconfig
             lazydev-nvim
             luasnip
             neogit
