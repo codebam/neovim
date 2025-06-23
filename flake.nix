@@ -52,6 +52,7 @@
             friendly-snippets
             git-blame-nvim
             gitsigns-nvim
+            lazy-nvim
             lazydev-nvim
             lualine-nvim
             luasnip
