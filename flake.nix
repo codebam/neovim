@@ -42,7 +42,6 @@
             impure = "/etc/nixos/nvim-impure";
           };
           start = with pkgs.vimPlugins; [
-            avante-nvim
             blink-cmp
             blink-cmp-copilot
             catppuccin-vim
