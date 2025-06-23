@@ -39,6 +39,7 @@
         plugins = {
           dev.config = {
             pure = ./nvim;
+            impure = "/etc/nixos/nvim-impure";
           };
           start = with pkgs.vimPlugins; [
             avante-nvim
