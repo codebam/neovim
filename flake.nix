@@ -41,13 +41,15 @@
             nvim-treesitter.withAllGrammars
             oil-nvim
             plenary-nvim
+            sleuth
+            commentary
+            todo-comments-nvim
           ];
           opt = with pkgs.vimPlugins; [
             avante-nvim
             blink-cmp
             blink-cmp-copilot
             catppuccin-vim
-            commentary
             conform-nvim
             copilot-lua
             friendly-snippets
@@ -59,9 +61,7 @@
             nvim-surround
             nvim-web-devicons
             nui-nvim
-            sleuth
             telescope-nvim
-            todo-comments-nvim
             treesj
           ];
         };
