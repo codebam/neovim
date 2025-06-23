@@ -196,12 +196,15 @@ require("avante").setup({
 			api_key_name = {"pass", "show", "anthropic-api-key"},
 		},
 		rag_service = {
-			__inherited_from = "claude",
-			enabled = false,
+			__inherited_from = "ollama",
+			enabled = true,
 			host_mount = os.getenv("HOME"),
 			runner = "nix",
 			llm = {
-				provider = "claude",
+				provider = "ollama",
+				endpoint = "http://localhost:11434",
+				api_key = "",
+				model = "qwen3:14b",
 			},
 			embed = {
 				provider = "ollama",
