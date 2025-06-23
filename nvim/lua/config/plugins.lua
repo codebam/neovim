@@ -1,39 +1,3 @@
-require("blink.cmp").setup({
-	signature = { enabled = true },
-	snippets = { preset = "luasnip" },
-	sources = {
-		transform_items = function(_, items)
-			for _, item in ipairs(items) do
-				if item.kind == require("blink.cmp.types").CompletionItemKind.Snippet then
-					item.score_offset = item.score_offset + 10
-				end
-			end
-			return items
-		end,
-		default = {
-			"snippets",
-			"lsp",
-			"copilot",
-			"path",
-			"lazydev",
-			"omni",
-		},
-		providers = {
-			lazydev = {
-				name = "LazyDev",
-				module = "lazydev.integrations.blink",
-				score_offset = 100,
-			},
-			copilot = {
-				name = "copilot",
-				module = "blink-cmp-copilot",
-				score_offset = 100,
-				async = true,
-			},
-		},
-	},
-})
-
 require("lualine").setup()
 
 require("nvim-treesitter.configs").setup({
@@ -136,38 +100,10 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		python = { "isort", "black" },
-		rust = { "rustfmt", lsp_format = "fallback" },
-		javascript = { "prettierd", "prettier", stop_after_first = true },
-		typescript = { "prettierd", "prettier", stop_after_first = true },
-	},
-	format_on_save = {
-		timeout_ms = 500,
-		lsp_format = "fallback",
-	},
-})
-
 require("oil").setup()
-
-require("nvim-surround").setup()
-
-require("nvim-autopairs").setup()
 
 require("gitsigns").setup()
 
-require("neogit").setup()
-
-require("copilot").setup({
-	suggestion = {
-		enabled = false,
-	},
-	panel = {
-		enabled = false,
-	},
-})
 vim.api.nvim_create_autocmd("User", {
 	pattern = "BlinkCmpMenuOpen",
 	callback = function()
@@ -180,9 +116,5 @@ vim.api.nvim_create_autocmd("User", {
 		vim.b.copilot_suggestion_hidden = false
 	end,
 })
-
-require("treesj").setup()
-
-require("gitblame").setup()
 
 require("bqf").setup()

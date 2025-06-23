@@ -4,18 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     mnw.url = "github:gerg-l/mnw";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
-      mnw,
-      home-manager,
       ...
     }:
     let
@@ -27,9 +20,7 @@
           "vim"
         ];
 
-        initLua = ''
-          require("config")
-        '';
+        luaFiles = [ ./nvim/lua/init.lua ];
 
         providers = {
           ruby.enable = false;
@@ -39,9 +30,20 @@
         plugins = {
           dev.config = {
             pure = ./nvim;
-            impure = "/etc/nixos/nvim-impure";
+            impure = "/home/codebam/Documents/neovim/nvim";
           };
           start = with pkgs.vimPlugins; [
+            gitsigns-nvim
+            lazy-nvim
+            lualine-nvim
+            nvim-bqf
+            nvim-treesitter-textobjects
+            nvim-treesitter.withAllGrammars
+            oil-nvim
+            plenary-nvim
+          ];
+          opt = with pkgs.vimPlugins; [
+            avante-nvim
             blink-cmp
             blink-cmp-copilot
             catppuccin-vim
@@ -50,20 +52,13 @@
             copilot-lua
             friendly-snippets
             git-blame-nvim
-            gitsigns-nvim
-            lazy-nvim
             lazydev-nvim
-            lualine-nvim
             luasnip
             neogit
             nvim-autopairs
-            nvim-bqf
             nvim-surround
-            nvim-treesitter.withAllGrammars
-            nvim-treesitter-textobjects
             nvim-web-devicons
-            oil-nvim
-            plenary-nvim
+            nui-nvim
             sleuth
             telescope-nvim
             todo-comments-nvim
@@ -79,6 +74,7 @@
           nixd
           git
           markdown-oxide
+          cargo
         ];
       };
 
@@ -130,7 +126,7 @@
       apps = nixpkgs.lib.mapAttrs (_systemName: systemOutputs: systemOutputs.apps) perSystem;
 
       homeManagerModules.default = (
-        { pkgs, lib, ... }:
+        { pkgs, ... }:
         let
           sharedConfigData = mkMnwSharedConfig pkgs;
 
