@@ -1,3 +1,5 @@
+vim.lsp.inlay_hint.enable(true)
+
 vim.lsp.enable("nixd")
 vim.lsp.enable("nil_ls")
 vim.lsp.enable("rust_analyzer")
