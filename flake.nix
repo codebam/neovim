@@ -135,7 +135,7 @@
               aliases
               extraBinPath
               extraLuaPackages
-              initLua
+              luaFiles
               neovim
               plugins
               providers
