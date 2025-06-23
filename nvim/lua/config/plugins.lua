@@ -182,7 +182,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 require("avante").setup({
-	provider = "ollama",
+	provider = "claude",
 	providers = {
 		ollama = {
 			model = "qwen2.5-coder:32b",
@@ -193,17 +193,15 @@ require("avante").setup({
 		claude = {
 			endpoint = "https://api.anthropic.com",
 			model = "claude-sonnet-4-20250514";
+			api_key_name = {"pass", "show", "anthropic-api-key"},
 		},
 		rag_service = {
-			__inherited_from = "ollama",
-			enabled = true,
+			__inherited_from = "claude",
+			enabled = false,
 			host_mount = os.getenv("HOME"),
 			runner = "nix",
 			llm = {
-				provider = "ollama",
-				endpoint = "http://localhost:11434",
-				api_key = "",
-				model = "qwen2.5-coder:32b",
+				provider = "claude",
 			},
 			embed = {
 				provider = "ollama",
