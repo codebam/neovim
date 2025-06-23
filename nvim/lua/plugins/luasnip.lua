@@ -1,1 +1,1 @@
-return { "l3mon4d3/luasnip", }
+return { "l3mon4d3/luasnip" }

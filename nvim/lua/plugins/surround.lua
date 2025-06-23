@@ -1,4 +1,4 @@
 return {
-    "kylechui/nvim-surround",
-    event = "VeryLazy",
+	"kylechui/nvim-surround",
+	event = "VeryLazy",
 }

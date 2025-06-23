@@ -1,4 +1,4 @@
 return {
-    'Wansmer/treesj',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+	"Wansmer/treesj",
+	dependencies = { "nvim-treesitter/nvim-treesitter" },
 }

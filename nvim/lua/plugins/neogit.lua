@@ -1,6 +1,6 @@
 return {
-    "neogitorg/neogit",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-    },
+	"neogitorg/neogit",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
 }
