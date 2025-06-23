@@ -74,7 +74,6 @@
           nixd
           git
           markdown-oxide
-          cargo
         ];
       };
 
