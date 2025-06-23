@@ -71,10 +71,11 @@
 
         extraBinPath = with pkgs; [
           bash-language-server
-          nil
-          nixd
           git
           markdown-oxide
+          nil
+          nixd
+          stylua
         ];
       };
 
