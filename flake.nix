@@ -64,6 +64,7 @@
             treesj
             vim-commentary
             vim-sleuth
+            vim-snippets
           ];
         };
 
