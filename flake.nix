@@ -44,6 +44,7 @@
             blink-cmp
             blink-cmp-copilot
             catppuccin-vim
+            colorizer
             conform-nvim
             copilot-lua
             friendly-snippets
