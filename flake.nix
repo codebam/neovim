@@ -65,6 +65,7 @@
             vim-commentary
             vim-sleuth
             vim-snippets
+            vim-obsession
           ];
         };
 
