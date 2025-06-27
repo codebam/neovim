@@ -13,7 +13,7 @@ if mnw ~= nil then
 			patterns = { "" },
 			-- fallback to downloading plugins from git
 			-- disable this to force only using nix plugins
-			fallback = false,
+			fallback = true,
 		},
 
 		-- keep rtp/packpath the same

@@ -24,7 +24,7 @@
 
         providers = {
           ruby.enable = false;
-          python3.enable = true;
+          python3.enable = false;
         };
 
         plugins = {
@@ -63,7 +63,6 @@
             telescope-nvim
             vim-commentary
             vim-obsession
-            vimsence
             vim-sleuth
             vim-snippets
           ];
