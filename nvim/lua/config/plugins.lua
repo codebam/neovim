@@ -100,10 +100,6 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-require("oil").setup()
-
-require("gitsigns").setup()
-
 vim.api.nvim_create_autocmd("User", {
 	pattern = "BlinkCmpMenuOpen",
 	callback = function()
@@ -116,5 +112,3 @@ vim.api.nvim_create_autocmd("User", {
 		vim.b.copilot_suggestion_hidden = false
 	end,
 })
-
-require("bqf").setup()

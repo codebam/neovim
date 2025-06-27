@@ -33,11 +33,8 @@
             impure = "/home/codebam/Documents/neovim/nvim";
           };
           start = with pkgs.vimPlugins; [
-            gitsigns-nvim
             lazy-nvim
             lualine-nvim
-            nvim-bqf
-            oil-nvim
           ];
           opt = with pkgs.vimPlugins; [
             avante-nvim
@@ -59,14 +56,16 @@
             nvim-treesitter-textobjects
             nvim-treesitter.withAllGrammars
             nvim-web-devicons
+            oil-nvim
             plenary-nvim
             telescope-nvim
             todo-comments-nvim
-            treesj
             vim-commentary
+            vim-obsession
             vim-sleuth
             vim-snippets
-            vim-obsession
+            mini-nvim
+            mini-diff
           ];
         };
 
