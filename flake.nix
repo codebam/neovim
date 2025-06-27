@@ -61,7 +61,6 @@
             oil-nvim
             plenary-nvim
             telescope-nvim
-            todo-comments-nvim
             vim-commentary
             vim-obsession
             vim-sleuth
