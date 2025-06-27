@@ -48,6 +48,8 @@
             git-blame-nvim
             lazydev-nvim
             luasnip
+            mini-diff
+            mini-nvim
             neogit
             nui-nvim
             nvim-autopairs
@@ -64,8 +66,6 @@
             vim-obsession
             vim-sleuth
             vim-snippets
-            mini-nvim
-            mini-diff
           ];
         };
 
