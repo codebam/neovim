@@ -1,4 +1,5 @@
-vim.cmd.colorscheme("catppuccin_mocha")
+vim.g.ayucolor = "dark"
+vim.cmd.colorscheme("ayu")
 
 vim.opt.guicursor = "n-v-c-i:block"
 

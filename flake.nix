@@ -38,9 +38,9 @@
           ];
           opt = with pkgs.vimPlugins; [
             avante-nvim
+            ayu-vim
             blink-cmp
             blink-cmp-copilot
-            catppuccin-vim
             colorizer
             conform-nvim
             copilot-lua
