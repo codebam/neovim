@@ -35,6 +35,10 @@
           start = with pkgs.vimPlugins; [
             lazy-nvim
             lualine-nvim
+            copilot-lua
+            nui-nvim
+            nvim-treesitter.withAllGrammars
+            plenary-nvim
           ];
           opt = with pkgs.vimPlugins; [
             avante-nvim
@@ -43,7 +47,6 @@
             blink-cmp-copilot
             colorizer
             conform-nvim
-            copilot-lua
             friendly-snippets
             git-blame-nvim
             lazydev-nvim
@@ -51,15 +54,12 @@
             mini-diff
             mini-nvim
             neogit
-            nui-nvim
             nvim-autopairs
             nvim-lspconfig
             nvim-surround
             nvim-treesitter-textobjects
-            nvim-treesitter.withAllGrammars
             nvim-web-devicons
             oil-nvim
-            plenary-nvim
             telescope-nvim
             vim-commentary
             vim-obsession
